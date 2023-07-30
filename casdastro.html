@@ -2,33 +2,60 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="Joao Pedro">
+    <meta name="description" content="página de cadastro">
+    <meta name="keywords" content="Cadastro">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/reset.css">
     <link rel="stylesheet" href="src/css/style_cadastro.css">
-    <title>Cadastro</title>
+    <title>Register</title>
 </head>
-<body>
-    <header>
-
-    </header>
-
+<body> 
     <main>
-        <h1>Cadastro</h1>
-        <form>
-            <input type="text" name="nome" placeholder="Nome" required>
-            <input type="text" name="sobrenome" placeholder="Sobrenome" required>
-            <input type="text" name="texto" placeholder="Nome de Usuário" required autofocus>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="senha" placeholder="Senha
-            " required>
-            <input type="password" name="confirmarSenha" placeholder="Confirmar senha" required>
-            <button type="submit" value="cadastrar">Cadastrar</button>
+        <section class="section-register">
+            <form method="post" class="form">
+                <div class="grup-1">
+                    <div>
+                        <input type="text" name="name" id="name" required autofocus>
+                        <label for="nome">Name*</label>
+                    </div><!--nome-->
+                    <div>
+                        <input type="text" name="surname" id="surname" required>
+                        <label for="sobrenome">Surname*</label>
+                    </div><!--surname-->
+                </div><!--grup-1-->
+                <div class="grup-2">
+                    <div>
+                        <input type="text" name="User-name" id="user-name" required>
+                        <label for="user-name">User name*</label>
+                    </div><!--User name-->
+                    <div>
+                        <input type="email" name="email" id="email" required>
+                        <label for="email">Email*</label>
+                    </div><!--email-->
+                </div><!--grup-2-->
+                <div class="grup-3">
+                    <div>
+                        <input type="password" name="password" id="password" required>
+                        <label for="password">Password*</label>
+                    </div><!--password-->
+                    <div>
+                        <input type="password" name="confirm-password" id="confirm-password" required>
+                        <label for="confirm-password">Confirm password*</label>
+                    </div><!--confirm password-->
+                </div><!--grup-3-->
+                <button type="submit" value="register">Register</button><!--botão register-->
+            </form><!--form-->
+        </section><!--section-register-->
+        <section class="link-login">
             <a href="./index.html">Login</a>
-        </form>
-    
+        </section><!--link-login-->
+        <div class="bg-circle-1"></div>
+        <div class="bg-circle-2"></div>
     </main>
-
 </body>
-
 </html>
