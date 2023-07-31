@@ -1,6 +1,5 @@
 html, body{
     height: 100%;
-    overflow: hidden;
 }
 
 ::selection{
@@ -17,11 +16,13 @@ main{
     background-color:  rgb(20, 20, 20);
 }
 
+
 /*section-register*/
 
 .section-register{
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
     width: 80%;
     background-color: rgb(30, 20, 20);
@@ -29,6 +30,26 @@ main{
     border-radius: 20px;
     box-shadow: red 0px 0px 15px;
     z-index: 2;
+}
+
+.section-register > div{
+    display: flex;
+    width: 80px;
+    height: 80px;
+    background-color: #251010;
+    border-radius: 50%;
+    border: rgb(220, 0, 0) solid 2px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 40px;  
+    box-shadow: red 0px 0px 10px; 
+}
+
+.section-register img{
+    filter: invert(100%);
+    width: 70%;
+    height: 70%;
 }
 
 /*form*/
@@ -40,7 +61,7 @@ main{
     padding: 15px;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: -40px;
 }
 
 .section-register .form > div{
@@ -50,12 +71,12 @@ main{
     justify-content: space-between;
 }
 
-.section-register .form > div > div{
+.section-register .form > div > div:not(.password-div){
     position: relative;
-    width: 49%;
+    width: 48%;
 }
 
-.section-register .form > div > div > input{
+.section-register .form > div > div > input:not(#look_password){
     background-color: rgb(20, 20, 20);
     border: none;
     padding: 15px;
@@ -66,19 +87,43 @@ main{
     width: 100%;
 }
 
-.section-register .form > div > div > input:focus{
+.form .password-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form .password-div > label{
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/visivel.png);
+    background-size: contain;
+    opacity: 50%;
+    cursor: pointer;
+}
+
+
+.form .password-div > input{
+    appearance: none;
+}
+
+.form .password-div > input:checked ~ label{
+    background-image: url(../img/olho.png);
+}
+
+.section-register .form > div > div > input:not(#look_password):focus{
     outline: none;
     color: #fff;
     box-shadow: red 0px 0px 10px;
 }
 
-.section-register .form > div > div > input:-webkit-autofill, .section-register .form > div > div > input:-webkit-autofill:is(:hover, :focus){
+.section-register .form > div > div > input:not(#look_password), .section-register .form > div > div > input:not(#look_password):-webkit-autofill:is(:hover, :focus){
     background-color: rgb(20, 20, 20);
     -webkit-text-fill-color: #fff;
     transition: background-color 5000s ease-in-out 0s;
 }
 
-.section-register .form > div > div > label{
+.section-register .form > div > div > label:not(#label-password){
     position: absolute;
     top: 50%;
     left: 3%;
@@ -89,15 +134,15 @@ main{
     color: rgb(118, 118, 118);
 }
 
-.section-register .form > div > div > input:is(:focus, :valid) ~ label{
-    top: -50%;
+.section-register .form > div > div > input:not(#look_password):is(:focus, :valid) ~ label{
+    top: -30%;
 }
 
-.section-register .form > div > div > input:invalid ~ label{
+.section-register .form > div > div > input:not(#look_password):invalid ~ label{
     color: rgba(255, 0, 0, 0.5);
 }
 
-.section-register .form > div > div > input:valid ~ label{
+.section-register .form > div > div > input:not(#look_password):valid ~ label{
     color: green;
 }
 
@@ -169,19 +214,62 @@ main{
 
 .bg-circle-1, .bg-circle-2{
     position: absolute;
-    width: 40vw;
-    height: 60vh;
-    background-color: rgba(200, 0, 0, 0.3);
-    border-radius: 50%;
+    width: 30vw;
+    height: 35vh;
+    background-color: rgba(200, 0, 0, 0.5);
     filter: blur(70px);
 }
 
 .bg-circle-2{
-    top: -15vw;
-    left: -30vh;
+    top: 0;
+    left: 0;
+    border-bottom-right-radius: 100%;
 }
 
 .bg-circle-1{
-    bottom: -15vw;
-    right: -30vh;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 100%;
+}
+
+/*media queries*/
+
+@media screen and (max-width: 856px){
+    .section-register{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .section-register{
+        margin-top: 50px;
+    }
+
+    .section-register .form > div{
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .section-register .form > div > div:not(.password-div){
+        width: 100%;
+        margin-bottom: 32px;
+    }
+
+    .section-register .form .grup-3{
+        position: relative;
+    }
+
+    .section-register .form .password-div{
+        position: absolute;
+        top: 50px;
+        right: 3%;
+    }
+
+    .section-register .form > button{
+        margin-top: 0;
+    }
+
+    .section-register .form > div > div > input:not(#look_password):is(:focus, :valid) ~ label{
+        font-size: 12px;
+    }
 }

@@ -6,19 +6,21 @@
     <meta name="description" content="página de login">
     <meta name="keywords" content="login">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/reset.css">
     <link rel="stylesheet" href="src/css/style_index.css">
-    <title>Página de Login</title>
+    <title>Login</title>
 </head>
 <body>
     <main>
         <section class="section-login">
             <div>
-                <img src="src/img/logo-empresa.png" alt="Logo da empresa"><!--imagem empresa-->
+                <img src="src/img/logo-empresa.png" alt="
+                company logo" title="
+                Company logo"><!--imagem empresa-->
             </div>
             <form method="get" class="form">    
                 <div>
@@ -27,12 +29,16 @@
                         <label for="texto">User*</label>
                     </div>
                     <div class="input">
-                        <input type="email" id="email"name="email" required>
-                        <label for="email">Email*</label>
+                        <input onchange="valiGmail();" type="email" id="email"name="email" required>
+                        <label id="label-gmail" for="email">Email*</label>
                     </div>
                     <div class="input">
-                        <input type="password" id="senha" name="senha" required>
-                        <label for="senha">Password*</label>
+                        <input type="password" id="password" name="senha" required>
+                        <label for="password">Password*</label>
+                        <div class="password-div">
+                            <input type="checkbox" name="look-password" id="look_password">
+                            <label id="label-password" for="look_password"></label>
+                        </div>
                     </div>
                     <button type="submit" value="Entrar">LOGIN</button>
                 </div>
@@ -54,5 +60,37 @@
         <div class="bg-circle-1"></div>
         <div class="bg-circle-2"></div>
     </main>
+    <script>
+        // look password
+
+        const look_password = document.querySelector("#look_password");
+        const password = document.querySelector("#password");
+
+        look_password.addEventListener('click', togglePass);
+
+        function togglePass(){
+            if(password.type == "password"){
+                password.type = "text";
+            }else{
+                password.type = "password";
+            }
+        }
+
+        //validade if gmail input is empty
+
+        const gmail = document.querySelector("#email");
+        const label_gmail = document.querySelector("#label-gmail");
+
+        function valiGmail(){
+            if(gmail.value == ""){
+                
+            }else{
+               label_gmail.style.top = "-25%"; 
+            }
+        }
+
+        valiGmail();
+
+    </script>
 </body>
 </html>

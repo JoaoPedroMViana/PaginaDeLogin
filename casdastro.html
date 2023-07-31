@@ -6,7 +6,7 @@
     <meta name="description" content="página de cadastro">
     <meta name="keywords" content="Cadastro">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;700;900&display=swap" rel="stylesheet">
@@ -17,6 +17,11 @@
 <body> 
     <main>
         <section class="section-register">
+            <div>
+                <img src="src/img/logo-empresa.png" alt="
+                company logo" title="
+                Company logo"><!--imagem empresa-->
+            </div>
             <form method="post" class="form">
                 <div class="grup-1">
                     <div>
@@ -34,21 +39,25 @@
                         <label for="user-name">User name*</label>
                     </div><!--User name-->
                     <div>
-                        <input type="email" name="email" id="email" required>
-                        <label for="email">Email*</label>
+                        <input onchange="valiGmail();" id="email" type="email" name="email" id="email" required>
+                        <label id="label-gmail" for="email">Email*</label>
                     </div><!--email-->
                 </div><!--grup-2-->
                 <div class="grup-3">
                     <div>
-                        <input type="password" name="password" id="password" required>
+                        <input onchange="validatePassword();" type="password" name="password" id="password" required>
                         <label for="password">Password*</label>
                     </div><!--password-->
+                    <div class="password-div">
+                        <input type="checkbox" name="look-password" id="look_password">
+                        <label id="label-password" for="look_password"></label>
+                    </div><!--password-div-->
                     <div>
-                        <input type="password" name="confirm-password" id="confirm-password" required>
-                        <label for="confirm-password">Confirm password*</label>
+                        <input onchange="validatePassword(); empty();" type="password" name="confirm-password" id="confirm-password" required>
+                        <label id="label-confirm" for="confirm-password">Confirm password*</label>
                     </div><!--confirm password-->
                 </div><!--grup-3-->
-                <button type="submit" value="register">Register</button><!--botão register-->
+                <button id="submit" type="submit" value="register">Register</button><!--botão register-->
             </form><!--form-->
         </section><!--section-register-->
         <section class="link-login">
@@ -57,5 +66,65 @@
         <div class="bg-circle-1"></div>
         <div class="bg-circle-2"></div>
     </main>
+    <script>
+
+        // look password
+
+        const confirm_password = document.querySelector("#confirm-password");
+        const look_password = document.querySelector("#look_password");
+        const password = document.querySelector("#password");
+
+        look_password.addEventListener('click', togglePass);
+
+        function togglePass(){
+            if(password.type == "password"){
+                password.type = "text";
+                confirm_password.type = "text";
+            }else{
+                password.type = "password";
+                confirm_password.type = "password"; 
+            }
+        }
+
+        //validate password
+
+        function validatePassword(){
+            if(password.value === confirm_password.value){
+                confirm_password.setCustomValidity('');
+            }else{
+                confirm_password.setCustomValidity('Passwords do not match');
+            }
+        }
+
+        //change top value label
+        
+        const label_confirm = document.querySelector("#label-confirm");
+
+        function empty(){
+            if(confirm_password.value == ""){
+                
+            } else{
+               label_confirm.style.top = "-30%"; 
+            }
+        }
+
+        empty();
+
+        //validade if gmail input is empty
+
+        const gmail = document.querySelector("#email");
+        const label_gmail = document.querySelector("#label-gmail");
+
+        function valiGmail(){
+            if(gmail.value == ""){
+                
+            }else{
+               label_gmail.style.top = "-30%"; 
+            }
+        }
+
+        valiGmail();
+
+    </script>
 </body>
 </html>

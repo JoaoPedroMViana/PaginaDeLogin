@@ -1,6 +1,5 @@
 html, body{
     height: 100%;
-    overflow: hidden;
 }
 
 ::selection{
@@ -16,6 +15,7 @@ main{
     align-items: center;
     background-color:  rgb(20, 20, 20);
 }
+
 
 /*Sessão login*/
 
@@ -130,7 +130,36 @@ main{
     position: relative;
 }
 
-.form .input label{
+.form .input .password-div{
+    position: absolute;
+    right: 2%;
+    content: "";
+    top: 15px;
+}
+
+.form .input .password-div > label{
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/visivel.png);
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 50%;
+    cursor: pointer;
+}
+
+
+.form .input .password-div > input{
+    appearance: none;
+}
+
+.form .input .password-div > input:checked ~ label{
+    background-image: url(../img/olho.png);
+}
+
+.form .input label:not(#label-password){
     position: absolute;
     top:25%;
     left: 3%;
@@ -138,18 +167,18 @@ main{
     transform: translateY(-25%);
     font-size: 14px;
     transition: 0.6s;
-    font-weight: 400    ;
+    font-weight: 400;
 }
 
-.form .input input:focus ~ label, .form .input input:valid ~ label{
+.form .input input:not(#look_password):focus ~ label, .form .input input:not(#look_password):valid ~ label{
     top: -25%;
 }
 
-.form .input input:invalid ~ label{
+.form .input input:not(#look_password):invalid ~ label{
     color: rgba(255, 0, 0, 0.5);
 }
 
-.form .input input:valid ~ label{
+.form .input input:not(#look_password):valid ~ label{
     color: green;
 }
 
@@ -165,10 +194,17 @@ main{
     width: 100%;
 }
 
-.form input:not(#remember):focus{
+.form input:not(#remember, #look_password):focus{
    outline: none;
    color: #fff;
    box-shadow: red 0px 0px 10px;
+}
+
+.form .input input[type="checkbox"]{
+    appearance: none;
+    background-color: red;
+    width: 15px;
+    height: 15px;
 }
 
 .form input:not(#remember), .form
@@ -198,7 +234,7 @@ input:not(#remember):-webkit-autofill:hover, .form input:not(#remember):-webkit-
     box-shadow: red 0px 0px 12px;
 }
 
-/*Link cadastro*/
+/*Link register*/
 
 .link-cadastro{
     width: 35%;
@@ -221,6 +257,7 @@ input:not(#remember):-webkit-autofill:hover, .form input:not(#remember):-webkit-
     border-top: none;
     box-shadow: red 0px 0px 15px;
     transform: translate(0, 0);
+    filter: blur(0px);
 }
 
 .link-cadastro a{
@@ -244,21 +281,22 @@ input:not(#remember):-webkit-autofill:hover, .form input:not(#remember):-webkit-
 
 .bg-circle-1, .bg-circle-2{
     position: absolute;
-    width: 40vw;
-    height: 60vh;
-    background-color: rgba(200, 0, 0, 0.3);
-    border-radius: 50%;
+    width: 30vw;
+    height: 35vh;
+    background-color: rgba(200, 0, 0, 0.5);
     filter: blur(70px);
 }
 
 .bg-circle-2{
-    top: -15vw;
-    left: -30vh;
+    top: 0;
+    left: 0;
+    border-bottom-right-radius: 100%;
 }
 
 .bg-circle-1{
-    bottom: -15vw;
-    right: -30vh;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 100%;
 }
 
 
